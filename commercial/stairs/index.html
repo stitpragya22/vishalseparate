@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images Gallery</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="../../assets/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Add custom styles here */
+        .image-container {
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* .w-49{
+        width: 49%;
+    }
+    .w-2{
+        width: 2%;
+    } */
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid mt-5 text-center">
+        <div class="row">
+            <div class='col-md-4'><a class="btn btn-primary" href="../../index.html">🏠 Home</a></div>
+            <div class='col-md-4'><h1 class="text-center">Stairs Images Gallery</h1></div>
+            <div class='col-md-4'><a class="btn btn-primary" href="../index.html">⬅ Back</a></div>
+        </div>
+
+        <div class="my-4 w-100 d-flex">
+            <div class="w-49 ">
+                <h2 class="text-success">Accepted Images &#10004; </h2>
+                <div class="rounded border border-success border-5 p-1">
+                    <div id="acceptedImages" class="image-container">
+                        <!-- Dynamic images will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="w-2">&nbsp;</div>
+            <div class="w-49">
+                <h2 class="text-danger">Unaccepted Images &#10060;</h2>
+                <div class="border border-5 border-danger rounded p-1">
+                    <div id="unacceptedImages" class="image-container">
+                        <!-- Dynamic images will be inserted here -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="../../assets/bootstrap.bundle.min.js"></script>
+    <script>
+        // Array of accepted images and unaccepted images
+        var acceptedImages = [
+            "1.jpeg",
+            "2.jpeg",
+            "3.jpeg",
+            "4.jpeg",
+            "5.jpeg"
+            // Add more accepted image URLs as needed
+        ];
+
+        var unacceptedImages = [
+            "1.jpeg",
+            "2.jpeg",
+            "3.jpeg",
+            "4.jpeg",
+            "5.jpeg"
+            // Add more unaccepted image URLs as needed
+        ];
+
+        // Function to create image elements and append them to the specified container
+        function populateImages(container, imageArray, folder) {
+            var imageContainer = document.getElementById(container);
+            imageArray.forEach(function (imageUrl) {
+                var img = document.createElement("img");
+                img.src = folder + "/" + imageUrl; // Adjusted image URL
+                img.alt = "Image";
+                img.classList.add("img-fluid");
+                var div = document.createElement("div");
+                div.classList.add("image-container");
+                div.appendChild(img);
+                imageContainer.appendChild(div);
+            });
+        }
+
+        // Populate accepted images
+        populateImages("acceptedImages", acceptedImages, "accepted");
+
+        // Populate unaccepted images
+        populateImages("unacceptedImages", unacceptedImages, "unaccepted");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal 🏢 Lines</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="../assets/bootstrap.min.css" rel="stylesheet">
+  <!-- DataTables CSS -->
+  <link href="../assets/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <style>
+    /* Adjust the width of "# (Sr. No.)" column */
+    .short-column {
+      width: 60px; /* Change this value to adjust the width */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class='col-md-4'><a class="btn btn-primary" href="../index.html">🏠 Home</a></div>
+    <div class='col-md-4'><h1 class="text-center">Personal 🏢 Lines</h1></div>
+</div>
+  
+  <p class="lead text-center">Explore our list of Personal Lines below:</p>
+  <div class="table-responsive">
+    <table id="personalLinesTable" class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th class="short-column"># (Sr. No.)</th> <!-- Add custom class here -->
+          <th>Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows will be inserted here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Bootstrap JS CDN -->
+<script src="../assets/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="../assets/jquery-3.6.0.min.js"></script>
+<!-- DataTables JS -->
+<script src="../assets/jquery.dataTables.min.js"></script>
+<script src="../assets/dataTables.bootstrap5.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // Array of titles and links
+    // link have foldername/index.html
+    // title as per requirement
+    var titles = [
+      { title: "Stairs", link: "./stairs/index.html" },
+      { title: "House-Keeping", link: "./housekeeping/index.html" },
+      { title: "Debris", link: "./debris/index.html" },
+      { title: "Ladder", link: "./ladder/index.html" },
+      { title: "Graffitti", link: "./graffitti/index.html" }
+      // Add more titles and links as needed
+    ];
+
+    // Populate table with titles and links
+    $.each(titles, function(index, item) {
+      var row = '<tr>' +
+                  '<td>' + (index + 1) + '</td>' +
+                  '<td><a href="' + item.link + '">' + item.title + '</a></td>' +
+                '</tr>';
+      $('#personalLinesTable tbody').append(row);
+    });
+
+    // Initialize DataTable
+    $('#personalLinesTable').DataTable();
+  });
+</script>
+</body>
+</html>
